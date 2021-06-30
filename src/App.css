@@ -20,7 +20,6 @@
   max-width: 1200px;
   width: 100%;
   height: 100%;
-  border: 2px solid red;
 }
 .content-wrapper--nav{
   display: flex;
@@ -31,6 +30,7 @@
   flex-direction: column;
   width: 100vw;
   align-items: center;
+  padding: 0 2em;
 }
 
 .subhead {
@@ -40,6 +40,85 @@
   height: 42px;
 }
 .count{
-  /* font-size: 12px; */
-  font-weight: 600;
+  font-family: "Proxima Nova Semi Bd";
+}
+table{
+  width: 100%;
+  
+  background: #FFFFFF;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 3px 2px 2px 2px;
+  border-spacing: 0;
+}
+thead{
+  background-color: #F9FAFB;
+}
+th{
+  text-align: left;
+  cursor: pointer;
+}
+
+.head{
+  display: flex;
+  gap: var(--padding-small);
+}
+.head img{
+  opacity: 0;
+  transition: 400ms;
+}
+.head:hover img{
+  opacity: 1;
+}
+td, th{
+  padding: var(--padding-default);
+}
+td:empty::before{
+  content: "-";
+}
+.row{
+  padding: 0;
+  align-items: center;
+  vertical-align: center;
+}
+.indicator{
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.indicator--active{
+  background-color: var(--color-jungle-green);
+}
+.nested{
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  align-items: center;
+  gap: var(--padding-default);
+  height: 100%;
+}
+.avator{
+  width: 30px;
+height: 30px;
+
+}
+td{
+  border-bottom: 1px solid #F9FAFB;
+  border-collapse: collapse;
+}
+.row--head{
+  font-family: "Proxima Nova Bd";
+
+}
+.row--important td{
+  font-family: "Proxima Nova Semi Bd";
+  /* display: flex; */
+
+
+}
+.minor{
+  font-weight: 500;
+  font-size: 12px;
+  font-family: "Proxima Nova Reg";
+  color: var(--color-grey-chatea);
 }
