@@ -4,6 +4,8 @@
   --color-jungle-green: #34B96F;
 
   --color-catskill-white: #EEF3F6;
+  --color-jumbo: #7C7C80;
+  --color-grey-chatea: #A6ACAF;
 
   --padding-default: 12px;
   --padding-small: 6px;
@@ -13,4 +15,44 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+html{
+  font-family: "Proxima Nova Reg";
+  color: var(--color-jumbo);
+  font-size: 12px;
+  /** Fix possible anti-aliasing issues*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-stroke: 1px transparent;
+  font-smoothing: antialiased;
+
+  /* line-height: 12px; */
+}
+/***************************************************************
+These styles are subject to the license agreement(s) provided when you purchased the license(s).
+
+https://store.typenetwork.com/cart/eula/type-network
+https://store.typenetwork.com/cart/eula/type-network
+https://store.typenetwork.com/cart/eula/type-network
+***************************************************************/
+
+.proximanovabold {
+  font-family: "Proxima Nova Bd";
+  font-display: swap;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.proximanovasemibold {
+  font-family: "Proxima Nova Semi Bd";
+  font-display: swap;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.proximanovaregular {
+  font-family: "Proxima Nova Reg";
+  font-display: swap;
+  font-style: normal;
+  font-weight: normal;
 }
