@@ -1,10 +1,10 @@
-export default interface Candidate {
+export interface Candidate {
   image: string,
   candidate: string,
   role: string,
   salary: number,
   last_comms: {
-    unread: false,
+    unread: boolean,
     description: string,
     date_time: string,
   },
