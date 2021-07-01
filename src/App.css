@@ -1,44 +1,40 @@
-.app{
+.app {
   background-color: var(--color-catskill-white);
   height: 100vh;
 }
 
-.nav--top{
+.nav--top {
   /* position: absolute; */
   width: 100vw;
   height: 60px;
   left: 0px;
   top: 0px;
-  
   background: var(--color-oxford-blue);
-
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 2em;
 }
 
-.content-wrapper{
+.content-wrapper {
   max-width: 1200px;
   width: 100%;
   height: 100%;
   padding: 0 2em;
 }
 
-.content-wrapper--nav{
+.content-wrapper--nav {
   display: flex;
   align-items: center;
 }
 
-.main{
+.main {
   display: flex;
   flex-direction: column;
   width: 100vw;
   align-items: center;
   padding: 0 2em;
 }
-
-
 
 .subhead {
   display: flex;
@@ -47,79 +43,85 @@
   height: 42px;
 }
 
-.count{
+.count {
   font-family: "Proxima Nova Semi Bd";
 }
 
-
-table{
+table {
   width: 100%;
-  
   background: var(--color-white);
-  
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
   border-radius: 3px 2px 2px 2px;
   border-spacing: 0;
-
   table-layout: auto;
 }
 
-thead{
+thead {
   background-color: var(--color-athens-gray);
   color: var(--color-oxford-blue);
 }
 
-th{
+th {
   text-align: left;
   cursor: pointer;
 }
 
-.head{
+.head {
   display: flex;
   gap: var(--padding-small);
 }
-.head img{
+
+.head img {
   opacity: 0;
   transition: 400ms;
 }
-.head:hover img{
+
+.head:hover img {
   opacity: 1;
 }
-td, th{
+
+td, th {
   padding: var(--padding-default);
   min-width: 140px;
 }
+
 /* Will render a dash for any empty cell */
-td:empty::before{
+
+td:empty::before {
   content: "–";
 }
 
-.indicator{
+.indicator {
   display: inline-block;
   width: 8px;
   height: 8px;
   border-radius: 50%;
 }
-.indicator--active{
+
+.indicator--active {
   background-color: var(--color-jungle-green);
 }
 
-.row{
+.row {
   padding: 0;
   align-items: center;
   vertical-align: center;
   transition: 400ms background-color;
 }
-.row--head{
+
+.row--head {
   font-family: "Proxima Nova Bd";
 }
+
 .row--archived {
   background-color: var(--color-athens-gray);
 }
-.row--important td{
+
+.row--important td {
   font-family: "Proxima Nova Semi Bd";
 }
-.nested{
+
+.nested {
   display: grid;
   grid-auto-flow: column;
   justify-content: start;
@@ -127,95 +129,106 @@ td:empty::before{
   gap: var(--padding-default);
   height: 100%;
 }
-.avator{
+
+.avator {
   width: 30px;
   height: 30px;
 }
 
-td{
+td {
   border-bottom: 1px solid var(--color-athens-gray);
   border-collapse: collapse;
 }
-.minor{
+
+.minor {
   font-weight: 500;
   font-size: 12px;
   font-family: "Proxima Nova Reg";
   color: var(--color-grey-chatea);
   object-fit: contain;
 }
-.nav--sub{
+
+.nav--sub {
   display: flex;
   width: 100%;
   padding: 10px 2em;
   justify-content: center;
   background-color: var(--color-white);
 }
-.nav--sub .content-wrapper{
+
+.nav--sub .content-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.input-wrapper{
+.input-wrapper {
   position: relative;
   width: 210px;
-height: 40px;
-background-color: var(--color-white);
-padding: var(--padding-default);
-display: flex;
-align-items: center;
-justify-content: flex-end;
-outline: 1px solid var(--color-mystic);
-border-radius: 3px;
+  height: 40px;
+  background-color: var(--color-white);
+  padding: var(--padding-default);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  outline: 1px solid var(--color-mystic);
+  border-radius: 3px;
 }
-.input-wrapper input{
+
+.input-wrapper input {
   position: absolute;
   width: 100%;
   height: 100%;
+  border: none;
+  outline: none;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  border: none;
-  outline: none;
   text-indent: var(--padding-default);
 }
-.input-wrapper input::placeholder{
+
+.input-wrapper input::placeholder {
   color: var(--color-grey-chatea);
 }
-.input-wrapper img{
+
+.input-wrapper img {
   transform: scale(1);
-  top: 50%;
   pointer-events: none;
 }
-.min{ 
+
+.min {
   width: 100px;
 }
-.btn{
+
+.btn {
+  background-color: #fff;
   border: none;
   outline: none;
-  background-color: #fff;
   cursor: pointer;
+  font-family: "Proxima Nova Reg";
 }
-.btn--plain{
-  margin-left: auto;
+
+.btn--plain {
   width: 100%;
+  margin-left: auto;
   text-align: right;
   color: var(--color-scooter);
   background-color: transparent;
 }
 
-.checkbox-wrapper .text{
+.checkbox-wrapper .text {
   font-size: 14px;
   line-height: 19px;
-  margin-right: var(--padding-default);
   text-align: right;
+  margin-right: var(--padding-default);
 }
-.checkbox-wrapper .checkbox{
-  background: var(--color-white-ice);
-  border: 1px solid var(--color-scooter);
+
+.checkbox-wrapper .checkbox {
   box-sizing: border-box;
   border-radius: 2px;
   padding: 5px;
   cursor: pointer;
+  background: var(--color-white-ice);
+  border: 1px solid var(--color-scooter);
 }
