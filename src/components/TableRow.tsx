@@ -1,24 +1,42 @@
 import React from 'react'
-import { relativeTimeFromDates } from '../helpers'
+import { ifClss, relativeTimeFromDates } from '../helpers'
 import { Candidate } from '../models'
 
-export const TableRow = (row: Candidate) => {
-  return (<tr key={row.candidate} className={"row" + (row.last_comms.unread ? " row--important" : "")}>
+export const TableRow = (props: RowProps) => {
+  const { candidate, image, role, sent_by, salary, last_comms, archived } = props.payload
+  return (<tr key={candidate} className={"row" + ifClss("row--important", last_comms.unread) + ifClss("row--archived", archived)}>
     <td>
       <div className="nested">
-        <span><img src={row.image} alt={row.candidate} className="avator" /></span>
-        <span>{row.candidate}</span>
+        <span><img src={image} alt={candidate} className="avator" /></span>
+        <span>{candidate}</span>
       </div>
     </td>
-    <td>{row.role}</td>
+    <td>{role}</td>
     <td>
       <div className="nested">
-        <span className={"indicator" + (row.last_comms.unread ? " indicator--active" : "")}></span>
-        <span>{row.last_comms.description}</span>
-        <span className="minor">{relativeTimeFromDates(new Date(row.last_comms.date_time))}</span>
+        <span className={"indicator" + (last_comms.unread ? " indicator--active" : "")}></span>
+        <span>{last_comms.description}</span>
+        <span className="minor">{relativeTimeFromDates(new Date(last_comms.date_time))}</span>
       </div>
     </td>
-    <td>R{row.salary}</td>
-    <td>{row.sent_by}</td>
+    <td>R{salary}</td>
+    <td>{sent_by}</td>
+    <td className="min"><Archiver payload={props.payload} updateHandler={props.updateHandler} /></td>
   </tr>)
+}
+
+function Archiver(data: RowProps) {
+  const row = data.payload;
+
+  const toggleArchived = () => data.updateHandler({
+    ...row,
+    archived: !row.archived
+  })
+  return <button className="btn btn--plain" onClick={toggleArchived}>{row.archived ? "Unarchive" : "Archive"}</button>
+
+}
+
+interface RowProps {
+  payload: Candidate;
+  updateHandler: (payload: Candidate) => Candidate[]
 }
