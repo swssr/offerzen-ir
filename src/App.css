@@ -22,6 +22,7 @@
   max-width: 1200px;
   width: 100%;
   height: 100%;
+  padding: 0 2em;
 }
 
 .content-wrapper--nav{
@@ -59,10 +60,13 @@ table{
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
   border-radius: 3px 2px 2px 2px;
   border-spacing: 0;
+
+  table-layout: fixed;
 }
 
 thead{
   background-color: var(--color-athens-gray);
+  color: var(--color-oxford-blue);
 }
 
 th{
@@ -133,4 +137,44 @@ td{
   font-family: "Proxima Nova Reg";
   color: var(--color-grey-chatea);
   object-fit: contain;
+}
+.nav--sub{
+  display: flex;
+  width: 100%;
+  padding: 10px 2em;
+  justify-content: center;
+  background-color: var(--color-white);
+}
+
+.input-wrapper{
+  position: relative;
+  width: 210px;
+height: 40px;
+background-color: var(--color-white);
+padding: var(--padding-default);
+display: flex;
+align-items: center;
+justify-content: flex-end;
+outline: 1px solid var(--color-mystic);
+border-radius: 3px;
+}
+.input-wrapper input{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: none;
+  outline: none;
+  text-indent: var(--padding-default);
+}
+.input-wrapper input::placeholder{
+  color: var(--color-grey-chatea);
+}
+.input-wrapper img{
+  transform: scale(1);
+  top: 50%;
+  pointer-events: none;
 }
