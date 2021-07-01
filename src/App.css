@@ -84,6 +84,7 @@ th{
 td, th{
   padding: var(--padding-default);
 }
+/* Will render a dash for any empty cell */
 td:empty::before{
   content: "-";
 }
