@@ -1,17 +1,45 @@
 //#region Imports
 import React, { useEffect, useState } from 'react';
+import { nanoid } from 'nanoid';
+
 import './App.css';
+
+import sortIcon from "./assets/sort.svg"
+
+import { Candidate } from './models';
 import { AllCandidates } from './db';
 
-import logo from "./assets/logo.svg"
-import sortIcon from "./assets/sort.svg"
-import { Candidate } from './models';
-import { relativeTimeFromDates } from './helpers';
-import { nanoid } from 'nanoid';
+import { InputChangeEvent } from './types';
+import { TableRow } from './components/TableRow';
+import FilterInput from './components/FilterInput';
+import NavTop from './components/NavTop';
 //#endregion Imports
 
+
 function App() {
+  /**
+   * Will need a filteredCandidate state store,
+   * To avoid mutating origin value, just incase I need the origins agains.
+   * 
+   * - searchValue - Currently used for determing if user is filtering or not.
+   */
   const [candidates, setCandidates] = useState<Candidate[]>([]);
+  const [filteredCandidates, setFilteredCandidates] = useState<Candidate[]>([]);
+  const [searchValue, setSearchValue] = useState<string>("");
+
+  const handleFilterChange = (event: InputChangeEvent) => {
+    const { value } = event.target;
+    const _clean = value.trim().toLowerCase();
+
+    const _filtered = candidates.filter(row => row.candidate.toLowerCase().includes(_clean))
+
+    setSearchValue(_clean);
+    setFilteredCandidates(_filtered);
+  }
+
+  const getCandidates = () => {
+    return searchValue ? filteredCandidates : candidates
+  }
 
   useEffect(() => {
     setCandidates(AllCandidates);
@@ -19,11 +47,12 @@ function App() {
 
   return (
     <div className="app">
-      <nav className="nav nav--top">
-        <div className="content-wrapper content-wrapper--nav">
-          <img src={logo} alt="offerzen logo" />
+      <NavTop />
+      <header className="nav nav--sub">
+        <div className="content-wrapper">
+          <FilterInput searchValue={searchValue} onChangeHandler={handleFilterChange} />
         </div>
-      </nav>
+      </header>
       <main className="main">
         <div className="content-wrapper">
           <div className="subhead">
@@ -40,7 +69,7 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              {candidates.map(row => (
+              {getCandidates().map(row => (
                 <TableRow key={nanoid()} {...row} />
               ))}
             </tbody>
@@ -51,33 +80,12 @@ function App() {
     </div>
   );
 }
-//
+
 function HeaderCell(props: HeaderCellProps) {
   return (<th>
     <div className="head"><span>{props.label}</span>
       <img src={sortIcon} alt="sort icon" /></div>
   </th>)
-}
-
-function TableRow(row: Candidate) {
-  return (<tr key={row.candidate} className={"row" + (row.last_comms.unread ? " row--important" : "")}>
-    <td>
-      <div className="nested">
-        <span><img src={row.image} alt={row.candidate} className="avator" /></span>
-        <span>{row.candidate}</span>
-      </div>
-    </td>
-    <td>{row.role}</td>
-    <td>
-      <div className="nested">
-        <span className={"indicator" + (row.last_comms.unread ? " indicator--active" : "")}></span>
-        <span>{row.last_comms.description}</span>
-        <span className="minor">{relativeTimeFromDates(new Date(row.last_comms.date_time))}</span>
-      </div>
-    </td>
-    <td>R{row.salary}</td>
-    <td>{row.sent_by}</td>
-  </tr>)
 }
 
 interface HeaderCellProps { label: string }
