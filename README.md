@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+# OfferZen Interview Requests 
+## Assessment - Task 1
+### `Overview`
+Hello there! The completed solution is [deployed here](https://offerzen-ir.vercel.app/). \
+If you want to run it locally please follow below.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### `Local Run`
+```bash
+$ git clone https://github.com/swssr/offerzen-ir.git
 
-## Available Scripts
+$ cd offerzen-ir/
 
-In the project directory, you can run:
+# Please make sure you have `nodejs` installed on your machine 
+$ npm i && npm start
+```
+***
 
-### `npm start`
+## 1. `What I did?`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I used `create-react-app` with `typescript`. \
+ Might seem like over-engineering but it really helps catch oopies before they hurt.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+I stored all of the mock `data` on a `db/index.ts` file that serves the payload as a normal JavaScript array.
 
-### `npm test`
+You'll also find a `models/` directory that contains all of the interfaces and possibly class declaration files. This is a *pattern I've learned and grown to love from angular*.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Other directories are self-describing with `helpers/` - containing all utility and helper functions like `timeRelativity` function. `assets/` has all of the media assets that I use. 
 
-### `npm run build`
+**Rendering UI**
+- First step was declaring the `color & spacing variables` up top of the `index.css` file.
+- Next I used the html `<table>` element to render the whole table UI.
+- I used css `:empty` pseudo-class to add dash on empty cells.
+- Finally, when everything worked just fine, I split up the table `row` and `header` cells into own components.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
