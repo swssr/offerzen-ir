@@ -22,7 +22,7 @@ I used `create-react-app` with `typescript`. \
 
 I stored all of the mock `data` on a `db/index.ts` file that serves the payload as a normal JavaScript array.
 
-You'll also find a `models/` directory that contains all of the interfaces and possibly class declaration files. This is a *pattern I've learned and grown to love from angular*.
+You'll also find a `models/` directory that contains some of the interfaces and possibly class declaration files. This is a *pattern I've learned and grown to love from angular*.
 
 Other directories are self-describing with `helpers/` - containing all utility and helper functions like `timeRelativity` function. `assets/` has all of the media assets that I use. 
 
@@ -34,11 +34,11 @@ Other directories are self-describing with `helpers/` - containing all utility a
 
 ##  Task B
 
-I first started by cleaning up any left over issues from task one. \
-From the on I build a container re-using the wrapper already defined on Task 1. \
-Next step was adding a wrapped `<input>` element with an svg search icon from Figma on top.
+I started by cleaning up any left over issues from task A. \
+From there on I built a container re-using the wrapper class already defined on Task A. \
+Next step was adding a wrapped `<input>` element with an svg search icon top.
 
-- I made the *search-icon* `pointer-events: none;` to make it click through.
+- The *search-icon* has `pointer-events: none;` to make it click through.
 - I cleaned up the input text and placeholder.
 - Finally, I noticed that when typing your search query, the table has jarring content shift, I made the `table-layout: fixed;` to address this.
 
@@ -46,10 +46,15 @@ The search mechanic is using a simple `filter` and `includes` string function. T
 
 ## Task C
 
-Which is section I now had to mutate the data being render. Since I chose to separate the filtered and unfiltered I had to find a way to sync any changes.
-- I could've went used `context` and created a pattern similar to redux but I chose not to since it I could easily *lift up the state*.
-- I have `handleUpdate` function on the topmost component which I pass down to children who need it.
+With this section I now had to mutate the data being render. Since I chose to separate the filtered and unfiltered data I had to find a way to sync any changes.
+- I could've went and used `context` and created a pattern similar to redux but I chose not to since it I could easily *lift up the state*.
+- I achieved this functionality by having a `handleUpdate` function on the topmost component where I can easily pass it down to any children who need it.
 - With all this I'm able to **filter** and **mutate** the state at the same time.
+***
+
+ <center>
+    <a href="https://offerzen-ir.vercel.app/">🚀🚀🚀 CLICK TO PREVIEW</a>
+ </center>
 
 
-> [🚀🚀🚀 CLICK TO PREVIEW](https://offerzen-ir.vercel.app/)
+***
