@@ -35,3 +35,7 @@ export function relativeTimeFromElapsed(elapsed: number): string {
   }
   return "";
 }
+
+export function ifClss(className: string, condition: boolean) {
+  return condition ? " " + className : ""
+}
