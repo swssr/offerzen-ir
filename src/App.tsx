@@ -20,7 +20,7 @@ import Checkbox from './components/Checkbox';
 function App() {
   /**
    * Will need a filteredCandidate state store,
-   * To avoid mutating origin value, just incase I need the origins agains.
+   * To avoid mutating original value, just incase I need the origins agains.
    * 
    * - searchValue - Currently used for determing if user is filtering or not.
    */
@@ -40,6 +40,11 @@ function App() {
     setFilteredCandidates(_filtered);
   }
 
+  /**
+   * @description Returns all data that's ultimately rendered. 
+   * I'm trying to avoid having too many conditions and logic on my render function.
+   * 
+   */
   const getCandidates = () => {
     const data = (searchValue ? filteredCandidates : candidates)
     if (!archivedShown) {
@@ -48,6 +53,7 @@ function App() {
     return data;
   }
 
+  //Handles all of the update on nested components
   const handleUpdate = (target: Candidate): Candidate[] => {
     const _updated = candidates.map(current => {
       const isTarget = current.candidate === target.candidate;
@@ -58,6 +64,7 @@ function App() {
       return isTarget ? target : current
     })
 
+    //Keep the unfiltered list insync with main store
     setFilteredCandidates(_updatedFiltered);
     setCandidates(_updated);
 

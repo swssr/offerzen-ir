@@ -1,10 +1,11 @@
 import React from 'react'
-import { ifClss, relativeTimeFromDates } from '../helpers'
+import { ifClass, relativeTimeFromDates } from '../helpers'
 import { Candidate } from '../models'
 
 export const TableRow = (props: RowProps) => {
   const { candidate, image, role, sent_by, salary, last_comms, archived } = props.payload
-  return (<tr key={candidate} className={"row" + ifClss("row--important", last_comms.unread) + ifClss("row--archived", archived)}>
+  //
+  return (<tr key={candidate} className={"row" + ifClass("row--important", last_comms.unread) + ifClass("row--archived", archived)}>
     <td>
       <div className="nested">
         <span><img src={image} alt={candidate} className="avator" /></span>
@@ -14,7 +15,7 @@ export const TableRow = (props: RowProps) => {
     <td>{role}</td>
     <td>
       <div className="nested">
-        <span className={"indicator" + (last_comms.unread ? " indicator--active" : "")}></span>
+        <span className={"indicator" + ifClass("indicator--active", last_comms.unread)}></span>
         <span>{last_comms.description}</span>
         <span className="minor">{relativeTimeFromDates(new Date(last_comms.date_time))}</span>
       </div>
@@ -26,14 +27,11 @@ export const TableRow = (props: RowProps) => {
 }
 
 function Archiver(data: RowProps) {
-  const row = data.payload;
-
   const toggleArchived = () => data.updateHandler({
-    ...row,
-    archived: !row.archived
+    ...data.payload,
+    archived: !data.payload.archived
   })
-  return <button className="btn btn--plain" onClick={toggleArchived}>{row.archived ? "Unarchive" : "Archive"}</button>
-
+  return <button className="btn btn--plain" onClick={toggleArchived}>{data.payload.archived ? "Unarchive" : "Archive"}</button>
 }
 
 interface RowProps {

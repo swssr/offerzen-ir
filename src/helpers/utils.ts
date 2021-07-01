@@ -36,6 +36,12 @@ export function relativeTimeFromElapsed(elapsed: number): string {
   return "";
 }
 
-export function ifClss(className: string, condition: boolean) {
-  return condition ? " " + className : ""
+/**
+ * 
+ * @param className - The you want to append if condition is true
+ * @param condition - Condition evaluated before appending {className}
+ * @returns class to append
+ */
+export function ifClass(className: string, condition: boolean) {
+  return condition ? " " + className.trim() : ""
 }
