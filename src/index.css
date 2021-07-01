@@ -6,6 +6,12 @@
   --color-catskill-white: #EEF3F6;
   --color-jumbo: #7C7C80;
   --color-grey-chatea: #A6ACAF;
+  
+  --color-athens-gray: #F9FAFB;
+
+  --color-white: #FFFFFF;
+
+
 
   --padding-default: 12px;
   --padding-small: 6px;
@@ -14,20 +20,25 @@
 *{
   margin: 0;
   padding: 0;
+
   box-sizing: border-box;
 }
+
 html{
   font-family: "Proxima Nova Reg";
   color: var(--color-jumbo);
+  
   font-size: 12px;
+  line-height: 12px;
+
   /** Fix possible anti-aliasing issues*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-stroke: 1px transparent;
   font-smoothing: antialiased;
-
-  /* line-height: 12px; */
 }
+
+
 /***************************************************************
 These styles are subject to the license agreement(s) provided when you purchased the license(s).
 
