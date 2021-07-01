@@ -90,7 +90,7 @@ td, th{
 }
 /* Will render a dash for any empty cell */
 td:empty::before{
-  content: "-";
+  content: "–";
 }
 
 .indicator{
