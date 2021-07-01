@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid';
 import './App.css';
 
 import sortIcon from "./assets/sort.svg"
+import checkIcon from "./assets/check.svg"
 
 import { Candidate } from './models';
 import { AllCandidates } from './db';
@@ -27,6 +28,8 @@ function App() {
   const [filteredCandidates, setFilteredCandidates] = useState<Candidate[]>([]);
   const [searchValue, setSearchValue] = useState<string>("");
 
+  const [archivedShown, setArchivedShow] = useState<boolean>(true);
+
   const handleFilterChange = (event: InputChangeEvent) => {
     const { value } = event.target;
     const _clean = value.trim().toLowerCase();
@@ -38,7 +41,27 @@ function App() {
   }
 
   const getCandidates = () => {
-    return searchValue ? filteredCandidates : candidates
+    const data = (searchValue ? filteredCandidates : candidates)
+    if (!archivedShown) {
+      return data.filter(value => !value.archived)
+    }
+    return data;
+  }
+
+  const handleUpdate = (target: Candidate): Candidate[] => {
+    const _updated = candidates.map(current => {
+      const isTarget = current.candidate === target.candidate;
+      return isTarget ? target : current
+    })
+    const _updatedFiltered = filteredCandidates.map(current => {
+      const isTarget = current.candidate === target.candidate;
+      return isTarget ? target : current
+    })
+
+    setFilteredCandidates(_updatedFiltered);
+    setCandidates(_updated);
+
+    return _updated
   }
 
   useEffect(() => {
@@ -51,6 +74,12 @@ function App() {
       <header className="nav nav--sub">
         <div className="content-wrapper">
           <FilterInput searchValue={searchValue} onChangeHandler={handleFilterChange} />
+          <div className="checkbox-wrapper">
+            <span className="text">Show archived</span>
+            <span className="checkbox" onClick={() => setArchivedShow(!archivedShown)}>
+              <img src={checkIcon} alt="check" style={{ 'opacity': archivedShown ? "1" : "0" }} />
+            </span>
+          </div>
         </div>
       </header>
       <main className="main">
@@ -66,11 +95,12 @@ function App() {
                 <HeaderCell label="Last Communication" />
                 <HeaderCell label="Salary" />
                 <HeaderCell label="Sent By" />
+                <HeaderCell label="" />
               </tr>
             </thead>
             <tbody>
               {getCandidates().map(row => (
-                <TableRow key={nanoid()} {...row} />
+                <TableRow key={nanoid()} payload={row} updateHandler={handleUpdate} />
               ))}
             </tbody>
 
