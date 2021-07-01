@@ -108,9 +108,13 @@ td:empty::before{
   padding: 0;
   align-items: center;
   vertical-align: center;
+  transition: 400ms background-color;
 }
 .row--head{
   font-family: "Proxima Nova Bd";
+}
+.row--archived {
+  background-color: var(--color-athens-gray);
 }
 .row--important td{
   font-family: "Proxima Nova Semi Bd";
@@ -145,6 +149,11 @@ td{
   padding: 10px 2em;
   justify-content: center;
   background-color: var(--color-white);
+}
+.nav--sub .content-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .input-wrapper{
@@ -186,10 +195,27 @@ border-radius: 3px;
   border: none;
   outline: none;
   background-color: #fff;
+  cursor: pointer;
 }
 .btn--plain{
   margin-left: auto;
   width: 100%;
   text-align: right;
   color: var(--color-scooter);
+  background-color: transparent;
+}
+
+.checkbox-wrapper .text{
+  font-size: 14px;
+  line-height: 19px;
+  margin-right: var(--padding-default);
+  text-align: right;
+}
+.checkbox-wrapper .checkbox{
+  background: var(--color-white-ice);
+  border: 1px solid var(--color-scooter);
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 5px;
+  cursor: pointer;
 }
