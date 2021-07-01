@@ -53,7 +53,7 @@ With this section I now had to mutate the data being render. Since I chose to se
 ***
 
  <center>
-    <a href="https://offerzen-ir.vercel.app/">🚀🚀🚀 CLICK TO PREVIEW</a>
+    <a href="https://offerzen-ir.vercel.app/">🚀🚀 CLICK TO PREVIEW🚀🚀</a>
  </center>
 
 
