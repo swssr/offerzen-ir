@@ -5,7 +5,6 @@ import { nanoid } from 'nanoid';
 import './App.css';
 
 import sortIcon from "./assets/sort.svg"
-import checkIcon from "./assets/check.svg"
 
 import { Candidate } from './models';
 import { AllCandidates } from './db';
@@ -14,6 +13,7 @@ import { InputChangeEvent } from './types';
 import { TableRow } from './components/TableRow';
 import FilterInput from './components/FilterInput';
 import NavTop from './components/NavTop';
+import Checkbox from './components/Checkbox';
 //#endregion Imports
 
 
@@ -74,12 +74,7 @@ function App() {
       <header className="nav nav--sub">
         <div className="content-wrapper">
           <FilterInput searchValue={searchValue} onChangeHandler={handleFilterChange} />
-          <div className="checkbox-wrapper">
-            <span className="text">Show archived</span>
-            <span className="checkbox" onClick={() => setArchivedShow(!archivedShown)}>
-              <img src={checkIcon} alt="check" style={{ 'opacity': archivedShown ? "1" : "0" }} />
-            </span>
-          </div>
+          <Checkbox isChecked={archivedShown} toggleChecked={setArchivedShow} />
         </div>
       </header>
       <main className="main">
